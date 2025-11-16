@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神仙体系 - 是神仙也是祖师</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #8B4513, #D2691E, #CD853F, #D2691E, #8B4513);
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .site-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #8B4513;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        /* 导航栏样式 */
+        nav {
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            border-radius: 12px;
+            padding: 0;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-item {
+            margin: 0;
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 25px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #FFD700;
+        }
+        
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: #FFD700;
+        }
+        
+        .nav-link::after {
+            content: "|";
+            position: absolute;
+            right: 0;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .nav-item:last-child .nav-link::after {
+            content: "";
+        }
+        
+        /* 主标题样式 */
+        .main-title {
+            text-align: center;
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            border-radius: 15px;
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-title::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .main-title h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .main-title p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        /* 内容区域样式 */
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .content-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .content-image:hover {
+            transform: translateY(-5px);
+        }
+        
+        .content-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .content-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        .content-text {
+            flex: 2;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .content-text::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, #8B4513, #D2691E);
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .content-text h2 {
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #D2B48C;
+            padding-bottom: 10px;
+        }
+        
+        .content-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #f9f3e9 0%, #f9f3e9 100%);
+            padding: 15px 20px;
+            border-left: 4px solid #8B4513;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-style: italic;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* 神仙体系样式 */
+        .shenxian-section {
+            margin: 40px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #8B4513;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #8B4513, #D2691E);
+        }
+        
+        /* 神仙体系网格 */
+        .shenxian-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .shenxian-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shenxian-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .shenxian-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: #8B4513;
+        }
+        
+        .shenxian-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #8B4513;
+        }
+        
+        .shenxian-desc {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* 神仙体系图样式 */
+        .diagram-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .diagram-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .diagram-container:hover {
+            transform: scale(1.02);
+        }
+        
+        .diagram-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* 神仙等级表格 */
+        .hierarchy-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hierarchy-table th {
+            background: linear-gradient(to right, #8B4513, #A0522D);
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        .hierarchy-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .hierarchy-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .hierarchy-table tr:hover {
+            background: #f1f1f1;
+            transition: background 0.3s ease;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #FFD700;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-section {
+                margin-bottom: 15px;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+            }
+            
+            .nav-link::after {
+                content: "";
+            }
+            
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .main-title h1 {
+                font-size: 32px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <!-- 头部 -->
+        <header>
+            <div class="logo-section">
+                <img src="../image/o3mHD5xa49.jpg" alt="道家文化标志" class="logo">
+                <div class="site-title">道家文化</div>
+            </div>
+        </header>
+        
+        <!-- 导航栏 -->
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="wuxin.html" class="nav-link">五行</a></li>
+                <li class="nav-item"><a href="bagua.html" class="nav-link">八卦</a></li>
+                <li class="nav-item"><a href="shenxian.html" class="nav-link active">神仙体系</a></li>
+                <li class="nav-item"><a href="dongtian.html" class="nav-link">洞天福地</a></li>
+                <li class="nav-item"><a href="lishi.html" class="nav-link">历史传承</a></li>
+                <li class="nav-item"><a href="../index.html" class="nav-link">返回首页</a></li>
+            </ul>
+        </nav>
+        
+        <!-- 主标题 -->
+        <section class="main-title">
+            <h1>神仙体系</h1>
+            <p>是神仙也是祖师</p>
+        </section>
+        
+        <!-- 内容区域 -->
+        <section class="content-section">
+            <div class="content-image">
+                <img src="../image/006m1xaHly1i6m8bj95ojj31y03n81l7.jpg" alt="神仙体系示意图">
+            </div>
+            <div class="content-text">
+                <h2>神仙体系概述</h2>
+                <p>中国道教神仙谱系，源远流长，博大精深，是中华文化的重要组成部分。从东汉末年道教形成之初，神仙信仰便伴随着道教的兴起而逐渐发展壮大。经过历朝历代的传承与发展，道教神仙谱系逐渐完善，形成了今天我们所见的庞大而复杂的神仙体系。</p>
+                
+                <div class="highlight">
+                    道教以"道"为最高信仰。"道"无形无象，而又生育天地万物。
+                    "道"在人和万物中的显现就是"德"。故万物莫不尊道而贵德。
+                </div>
+                
+                <p>道散则为气，聚则为神。神仙既是道的化身，又是得道的楷模。道教认为闻道有先后，德道有高低。</p>
+                <p>道家言存心邪僻任尔烧香无点益;扶身正大见吾不拜有何妨。道家认为神仙只有对道的理解深浅之分，而没有等级地位之别，神仙以济世度人为宗旨。故道教徒既信道德，又敬神仙。</p>
+            </div>
+        </section>
+        
+        <!-- 神仙体系展示 -->
+        <section class="shenxian-section">
+            <h2 class="section-title">主要神仙类别</h2>
+            <div class="shenxian-grid">
+                <div class="shenxian-card">
+                    <div class="shenxian-icon"><i class="fas fa-crown"></i></div>
+                    <div class="shenxian-name">天尊</div>
+                    <div class="shenxian-desc">道教最高神灵，如三清天尊，代表道的本源和最高境界</div>
+                </div>
+                <div class="shenxian-card">
+                    <div class="shenxian-icon"><i class="fas fa-mountain"></i></div>
+                    <div class="shenxian-name">帝君</div>
+                    <div class="shenxian-desc">执掌天地事务的高级神灵，如玉皇大帝、东华帝君等</div>
+                </div>
+                <div class="shenxian-card">
+                    <div class="shenxian-icon"><i class="fas fa-star"></i></div>
+                    <div class="shenxian-name">星君</div>
+                    <div class="shenxian-desc">掌管星辰运行和命运的神灵，如北斗七星君、南斗六星君</div>
+                </div>
+                <div class="shenxian-card">
+                    <div class="shenxian-icon"><i class="fas fa-dragon"></i></div>
+                    <div class="shenxian-name">真君</div>
+                    <div class="shenxian-desc">得道成仙的高人，如二郎真君、四大天师等</div>
+                </div>
+                <div class="shenxian-card">
+                    <div class="shenxian-icon"><i class="fas fa-landmark"></i></div>
+                    <div class="shenxian-name">祖师</div>
+                    <div class="shenxian-desc">道教各派创始人或重要传承者，如张道陵、吕洞宾等</div>
+                </div>
+                <div class="shenxian-card">
+                    <div class="shenxian-icon"><i class="fas fa-user"></i></div>
+                    <div class="shenxian-name">仙人</div>
+                    <div class="shenxian-desc">通过修炼得道成仙者，拥有神通，长生不老</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 神仙等级表格 -->
+        <section class="shenxian-section">
+            <h2 class="section-title">神仙等级体系</h2>
+          <table class="hierarchy-table">
+                <thead>
+                    <tr>
+                        <th>等级</th>
+                        <th>名称</th>
+                        <th>代表神仙</th>
+                        <th>主要职能</th>
+                    </tr>
+                </thead>
+            <tbody>
+                    <tr>
+                        <td>最高级</td>
+                        <td>天尊</td>
+                        <td>元始天尊、灵宝天尊、道德天尊</td>
+                        <td>道的本源，宇宙的创造者和主宰者</td>
+                    </tr>
+                    <tr>
+                        <td>高级</td>
+                        <td>帝君</td>
+                        <td>玉皇大帝、紫微大帝、长生大帝</td>
+                        <td>执掌天地事务，管理三界</td>
+                    </tr>
+                    <tr>
+                        <td>中级</td>
+                        <td>星君</td>
+                        <td>北斗七星君、南斗六星君、太白金星</td>
+                        <td>掌管星辰运行，影响人间命运</td>
+                    </tr>
+                    <tr>
+                        <td>中级</td>
+                        <td>真君</td>
+                        <td>二郎真君、四大天师、雷部诸神</td>
+                        <td>执行天界法令，护佑人间</td>
+                    </tr>
+                    <tr>
+                        <td>基础级</td>
+                        <td>仙人</td>
+                        <td>八仙、各地城隍、土地神</td>
+                        <td>济世度人，护佑一方百姓</td>
+                    </tr>
+            </tbody>
+          </table>
+        </section>
+        
+        <!-- 神仙体系图 -->
+  <section class="diagram-section">
+            <h2 class="section-title">道教神仙体系图谱</h2>
+            <div class="diagram-container">
+                <img src="../image/61f5af9893fa5c2758178531b19b2d84.jpeg" alt="道教神仙体系图谱">
+            </div>
+    </section>
+        
+    <!-- 页脚 -->
+    </div>
+</body>
+</html>
